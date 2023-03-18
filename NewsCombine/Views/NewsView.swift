@@ -14,16 +14,16 @@ struct NewsView: View {
         NavigationView(){
             ScrollView{
                 ForEach(newsViewModel.news){ article in
-                    Text(article.description!)
+                    NavigationLink(destination: DetailedNewsView(news: article)){
+                        NewsCard(news: article)
+                    }
                 }
             }
-
+            .navigationTitle("News")
         }
         .onAppear{
             newsViewModel.getNews()
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("News")
     }
 }
 
