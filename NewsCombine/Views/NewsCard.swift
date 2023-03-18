@@ -10,6 +10,7 @@ import SwiftUI
 struct NewsCard: View {
     
     @StateObject private var imageLoader = ImageLoader()
+    @Environment(\.colorScheme) var colorScheme
 
     var news: News
     var body: some View {
@@ -26,7 +27,8 @@ struct NewsCard: View {
             VStack{
                 Text(news.title)
                     .padding(.horizontal, 10)
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                
                 Spacer()
                 HStack{
                     Text(news.source)

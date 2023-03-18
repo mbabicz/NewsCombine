@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsView: View {
-    @ObservedObject var newsViewModel = NewsViewModel()
+    @StateObject var newsViewModel = NewsViewModel()
     
     var body: some View {
         NavigationView(){
@@ -22,7 +22,7 @@ struct NewsView: View {
             .navigationTitle("News")
         }
         .onAppear{
-            newsViewModel.getNews()
+           newsViewModel.getNews()
         }
     }
 }
