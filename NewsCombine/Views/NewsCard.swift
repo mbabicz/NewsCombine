@@ -31,10 +31,10 @@ struct NewsCard: View {
                 
                 Spacer()
                 HStack{
-                    Text(news.source)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .padding(.horizontal)
+//                    Text(news.source)
+//                        .font(.footnote)
+//                        .foregroundColor(.gray)
+//                        .padding(.horizontal)
                     Spacer()
                     Text(news.author ?? "")
                         .font(.footnote)
@@ -45,17 +45,13 @@ struct NewsCard: View {
             }
         }
         .background(.gray.opacity(0.1))
-//        .shadow(radius: 10)
         .cornerRadius(12)
         .padding(.horizontal, 10)
         .onAppear {
-            imageLoader.loadImage(with: URL(string: news.image)!)
+            if news.urlToImage != nil{
+                imageLoader.loadImage(with: URL(string: news.urlToImage!)!)
+            }
         }
     }
 }
 
-struct NewsCard_Previews: PreviewProvider {
-    static var previews: some View {
-        NewsCard(news: News.sampleNews)
-    }
-}
