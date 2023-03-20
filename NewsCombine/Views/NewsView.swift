@@ -11,7 +11,6 @@ struct NewsView: View {
     @StateObject var newsViewModel = NewsViewModel()
     @State var searchText: String = ""
     @State var currentPage = 1
-
     
     var body: some View {
         NavigationView(){
@@ -49,7 +48,6 @@ struct NewsView: View {
         .onChange(of: searchText) { searchText in
             newsViewModel.getNewsPrompt(searchText, page: 1)
         }
-        
     }
 }
 
