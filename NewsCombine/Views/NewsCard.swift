@@ -31,12 +31,12 @@ struct NewsCard: View {
                 
                 Spacer()
                 HStack{
-//                    Text(news.source)
-//                        .font(.footnote)
-//                        .foregroundColor(.gray)
-//                        .padding(.horizontal)
+                    Text(news.source.name)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .padding(.horizontal)
                     Spacer()
-                    Text(news.author ?? "")
+                    Text(news.formattedDate)
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .padding(.horizontal, 10)

@@ -18,6 +18,7 @@ struct DetailedNewsView: View {
             VStack {
                 Text(news.title)
                     .font(.headline)
+                    .padding(.horizontal, 10)
                 
                 if imageLoader.image != nil {
                     Image(uiImage: imageLoader.image!)
@@ -27,16 +28,19 @@ struct DetailedNewsView: View {
                         .padding(5)
                 }
                 Text(news.description ?? "")
+                    .padding(.bottom)
+                Text(news.content ?? "")
+                    .padding(.bottom)
+                
                 Link("Read more", destination: URL(string: news.url)!)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 10)
+                
                 
                 HStack{
-//                    Text(news.source).font(.callout)
+                    Text(news.source.name).font(.callout)
                     Spacer()
-                    Text("\(news.publishedAt)").font(.callout)
+                    Text("\(news.formattedDate)").font(.callout)
                 }
-                .padding(10)
                 Spacer()
             }
             .onAppear {
