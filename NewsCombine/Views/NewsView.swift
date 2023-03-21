@@ -20,7 +20,6 @@ struct NewsView: View {
                         NavigationLink(destination: DetailedNewsView(news: article)){
                             NewsCard(news: article)
                         }
-
                     }
                     Button(action: {
                         currentPage += 1
@@ -38,7 +37,6 @@ struct NewsView: View {
                 }
             }
             .navigationTitle("News")
-
         }
         .searchable(text: $searchText)
 

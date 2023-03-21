@@ -12,35 +12,41 @@ struct DetailedNewsView: View {
     var news: News
     @StateObject private var imageLoader = ImageLoader()
     @ObservedObject var newsViewModel = NewsViewModel()
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         ScrollView{
-            VStack {
+            VStack(spacing: 0) {
                 Text(news.title)
-                    .font(.headline)
-                    .padding(.horizontal, 10)
-                
+                    .font(.title)
+                    .padding(5)
+                    .cornerRadius(12)
                 if imageLoader.image != nil {
                     Image(uiImage: imageLoader.image!)
                         .resizable()
                         .cornerRadius(10)
                         .aspectRatio(contentMode: .fit)
-                        .padding(5)
+                        .padding([.horizontal, .top], 5)
                 }
-                Text(news.description ?? "")
-                    .padding(.bottom)
-                Text(news.content ?? "")
-                    .padding(.bottom)
-                
-                Link("Read more", destination: URL(string: news.url)!)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                
                 HStack{
                     Text(news.source.name).font(.callout)
                     Spacer()
                     Text("\(news.formattedDate)").font(.callout)
                 }
+                .padding(10)
+                .foregroundColor(.gray)
+                Text(news.description ?? "")
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 10)
+                Divider()
+                Text(news.content ?? "")
+                    .padding(.horizontal, 5)
+                    .padding(.vertical, 10)
+                Divider()
+                
+                Link("Read more", destination: URL(string: news.url)!)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(10)
                 Spacer()
             }
             .onAppear {
@@ -51,9 +57,3 @@ struct DetailedNewsView: View {
         }
     }
 }
-
-//struct DetailedNewsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DetailedNewsView(news: News.sampleNews)
-//    }
-//}

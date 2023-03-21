@@ -14,5 +14,4 @@ final class NewsCombineTests: XCTestCase {
         XCTAssertEqual(news.formattedDate, "20-03-2023")
     }
 
-
 }

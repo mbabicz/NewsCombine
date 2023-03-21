@@ -27,6 +27,7 @@ struct NewsCard: View {
             VStack{
                 Text(news.title)
                     .padding(.horizontal, 10)
+                    .padding(.top, 5)
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                 
                 Spacer()
@@ -44,7 +45,7 @@ struct NewsCard: View {
                 }
             }
         }
-        .background(.gray.opacity(0.1))
+        .background(colorScheme == .dark ? .white.opacity(0.2) : .black.opacity(0.1))
         .cornerRadius(12)
         .padding(.horizontal, 10)
         .onAppear {

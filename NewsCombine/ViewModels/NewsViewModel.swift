@@ -15,11 +15,9 @@ class NewsViewModel: ObservableObject{
 
     private var cancellable: AnyCancellable?
     private var cancellablePrompt: AnyCancellable?
-
     private var API_KEY = "API_KEY"
     
     func getNews(){
-        
         guard let url = URL(string: "https://newsapi.org/v2/top-headlines?country=us&apiKey=\(API_KEY)") else { fatalError("invalid url")}
         let urlRequest = URLRequest(url: url)
         
